@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rot_13.c                                           :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/24 16:42:37 by myanez-p          #+#    #+#             */
-/*   Updated: 2023/04/24 17:56:33 by melanieyane      ###   ########.fr       */
+/*   Created: 2023/04/25 10:36:40 by melanieyane       #+#    #+#             */
+/*   Updated: 2023/04/25 10:55:47 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int	main(int argc, char **argv)
+char    *ft_strdup(char *src)
 {
-	int	i;
-	
-	if (argc == 2)
-	{
-		i = 0;
-		while (argv[1][i])
-		{
-			if (argv[1][i] >= 'A' && argv[1][i] <= 'Z')
-				argv[1][i] = (argv[1][i] - 'A' + 13) % 26 + 'A';
-			else if  (argv[1][i] >= 'a' && argv[1][i] <= 'z')
-				argv[1][i] = (argv[1][i] - 'a' + 13) % 26 + 'a';
-			write(1, &argv[1][i], 1);
-			i ++;
-		}
-	}
-	write(1, "\n", 1);
+    int     i;
+    int     size;
+    char    *result;
+
+    while (src[size])
+        size ++;
+    result = malloc(sizeof(*src) * (size + 1));
+    if (!result)
+        return (NULL);
+    i = 0;
+    while (src[i])
+    {
+        result[i] = src[i];
+        i ++;
+    }
+    result[i] = '\0';
+    return (result);
 }

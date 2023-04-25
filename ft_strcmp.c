@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rot_13.c                                           :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/24 16:42:37 by myanez-p          #+#    #+#             */
-/*   Updated: 2023/04/24 17:56:33 by melanieyane      ###   ########.fr       */
+/*   Created: 2023/04/25 10:23:42 by melanieyane       #+#    #+#             */
+/*   Updated: 2023/04/25 10:30:08 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-int	main(int argc, char **argv)
+int ft_strcmp(char *s1, char *s2)
 {
-	int	i;
-	
-	if (argc == 2)
-	{
-		i = 0;
-		while (argv[1][i])
-		{
-			if (argv[1][i] >= 'A' && argv[1][i] <= 'Z')
-				argv[1][i] = (argv[1][i] - 'A' + 13) % 26 + 'A';
-			else if  (argv[1][i] >= 'a' && argv[1][i] <= 'z')
-				argv[1][i] = (argv[1][i] - 'a' + 13) % 26 + 'a';
-			write(1, &argv[1][i], 1);
-			i ++;
-		}
-	}
-	write(1, "\n", 1);
+    int i;
+
+    i = 0;
+    while (s1[i] && s2[i])
+    {
+        if (s1[i] != s2[i])
+            return (s1[i] - s2[i]);
+        i ++;
+    }
+    return (0);
 }
