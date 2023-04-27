@@ -1,25 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   print_bits.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/25 10:23:42 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/04/25 10:30:08 by melanieyane      ###   ########.fr       */
+/*   Created: 2023/04/27 15:46:05 by melanieyane       #+#    #+#             */
+/*   Updated: 2023/04/27 16:16:20 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_strcmp(char *s1, char *s2)
-{
-    int i;
+#include <unistd.h>
 
-    i = 0;
-    while (s1[i] && s2[i])
-    {
-        if (s1[i] != s2[i])
-            return (s1[i] - s2[i]);
-        i ++;
-    }
-    return (0);
+void	print_bits(unsigned char octet)
+{
+	int		i;
+	char	bit[9];
+
+	i = 7;
+	while (i >= 0)
+	{
+		while (octet)
+		{
+			if (octet % 2 == 0)
+				bit[i] = '0';
+			else
+				bit[i] = '1';
+			octet = octet / 2;
+			i --;
+		}
+		bit[i] = '0';
+		i --;
+	}
+	bit[8] = '\0';
+	i = 0;
+	while (bit[i])
+	{
+		write(1, &bit[i], 1);
+		i ++;
+	}
 }
+
+	
+	
