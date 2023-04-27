@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/25 10:23:42 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/04/27 15:46:44 by melanieyane      ###   ########.fr       */
+/*   Created: 2023/04/25 10:36:40 by melanieyane       #+#    #+#             */
+/*   Updated: 2023/04/27 17:51:47 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(char *s1, char *s2)
-{
-	int	i;
+#include <stdlib.h>
 
+char	*ft_strdup(char *src)
+{
+	int		i;
+	int		size;
+	char	*result;
+
+	size = 0;
+	while (src[size])
+		size ++;
+	result = malloc(sizeof(*src) * (size + 1));
+	if (!result)
+		return (NULL);
 	i = 0;
-	while (s1[i] && s2[i])
+	while (src[i])
 	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
+		result[i] = src[i];
 		i ++;
 	}
-	return (0);
+	result[i] = '\0';
+	return (result);
 }

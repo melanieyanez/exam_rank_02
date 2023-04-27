@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ulstr.c                                            :+:      :+:    :+:   */
+/*   alpha_mirror.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/24 15:27:02 by myanez-p          #+#    #+#             */
-/*   Updated: 2023/04/24 16:41:52 by myanez-p         ###   ########.fr       */
+/*   Created: 2023/04/24 17:59:04 by melanieyane       #+#    #+#             */
+/*   Updated: 2023/04/27 19:43:51 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int	main(int argc, char **argv)
 		while (argv[1][i])
 		{
 			if (argv[1][i] >= 'A' && argv[1][i] <= 'Z')
-				argv[1][i] = argv[1][i] + 32;
+				argv[1][i] = 'Z' - argv[1][i] + 'A';
 			else if (argv[1][i] >= 'a' && argv[1][i] <= 'z')
-				argv[1][i] = argv[1][i] - 32;
+				argv[1][i] = 'z' - argv[1][i] + 'a';
 			write(1, &argv[1][i], 1);
 			i ++;
 		}

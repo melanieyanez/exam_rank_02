@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   repeat_alpha.c                                     :+:      :+:    :+:   */
+/*   camel_to_snake.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/24 14:17:07 by myanez-p          #+#    #+#             */
-/*   Updated: 2023/04/24 15:09:00 by myanez-p         ###   ########.fr       */
+/*   Created: 2023/04/25 09:56:16 by melanieyane       #+#    #+#             */
+/*   Updated: 2023/04/27 19:53:30 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,35 +15,20 @@
 int	main(int argc, char **argv)
 {
 	int	i;
-	int j;
-	
+
+	i = 0;
 	if (argc == 2)
 	{
-		i = 0;
 		while (argv[1][i])
 		{
 			if (argv[1][i] >= 'A' && argv[1][i] <= 'Z')
 			{
-				j = argv[1][i] - 64;
-				while (j)
-				{
-					write(1, &argv[1][i], 1);
-					j --;
-				}
+				write(1, "_", 1);
+				argv[1][i] = argv[1][i] + 32;
 			}
-			if (argv[1][i] >= 'a' && argv[1][i] <= 'z')
-			{
-				j = argv[1][i] - 96;
-				while (j)
-				{
-					write(1, &argv[1][i], 1);
-					j --;
-				}
-			}
-			else
-				write(1, &argv[1][i], 1);
+			write(1, &argv[1][i], 1);
 			i ++;
 		}
-		write(1, "\n", 1);
 	}
+	write(1, "\n", 1);
 }

@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/13 15:57:34 by myanez-p          #+#    #+#             */
-/*   Updated: 2023/01/13 15:59:30 by myanez-p         ###   ########.fr       */
+/*   Created: 2023/04/25 10:23:42 by melanieyane       #+#    #+#             */
+/*   Updated: 2023/04/27 18:52:56 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdio.h>
 
-void	ft_putstr(char *str)
+int	ft_strcmp(char *s1, char *s2)
 {
 	int	i;
 
 	i = 0;
-	while (str[i] != '\0')
-	{
-		write(1, &str[i], 1);
+	while (s1[i] && s2[i] && s1[i] == s2[i])
 		i ++;
-	}
-}
-
-int	main(void)
-{
-	ft_putstr("salut");
+	return (s1[i] - s2[i]);
 }
