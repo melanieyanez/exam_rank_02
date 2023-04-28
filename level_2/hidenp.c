@@ -6,11 +6,9 @@
 /*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:23:04 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/04/28 18:33:35 by melanieyane      ###   ########.fr       */
+/*   Updated: 2023/04/28 19:41:24 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/* work in progress */
 
 #include <unistd.h>
 
@@ -28,13 +26,14 @@ int	main(int argc, char **argv)
 			while (argv[2][j])
 			{
 				if (argv[1][i] == argv[2][j])
-					break ;
+					i ++;
 				j ++;
 			}
 			if (argv[2][j] == '\0')
-				write(1, "0", 1);
-			i ++;
+				break ;
 		}
+		if (argv[2][j] == '\0' && argv[1][i] != '\0')
+			write(1, "0", 1);
 		if (argv[1][i] == '\0')
 			write(1, "1", 1);
 	}
