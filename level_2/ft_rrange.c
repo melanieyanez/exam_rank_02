@@ -1,43 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strspn.c                                        :+:      :+:    :+:   */
+/*   ft_rrange.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/28 16:08:37 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/04/28 17:18:55 by melanieyane      ###   ########.fr       */
+/*   Created: 2023/04/28 17:52:02 by melanieyane       #+#    #+#             */
+/*   Updated: 2023/04/28 17:53:25 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* not tested */
-
 #include <stdio.h>
+#include <stdlib.h>
 
-int	is_in_charset(const char *str, char str_i)
+int	*ft_rrange(int start, int end)
 {
 	int	i;
+	int	*result;
+	int	len;
 
+	len = abs(start - end) + 1;
+	result = malloc(sizeof(int) * len);
+	if (!result)
+		return (NULL);
 	i = 0;
-	while (str[i])
+	if (end < start)
 	{
-		if (str[i] == str_i)
-			return (1);
-		i ++;
+		while (i < len)
+		{
+			result[i] = end;
+			end ++;
+			i ++;
+		}
 	}
-	return (0);
-}
-
-size_t	ft_strcspn(const char *s, const char *reject)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
+	else
 	{
-		if (is_in_charset(reject, s[i]) == 0)
-			return (i);
-		i ++;
+		while (i < len)
+		{
+			result[i] = end;
+			end --;
+			i ++;
+		}
 	}
-	return (i);
+	return (result);
 }

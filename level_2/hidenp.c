@@ -1,43 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strspn.c                                        :+:      :+:    :+:   */
+/*   hidenp.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/28 16:08:37 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/04/28 17:18:55 by melanieyane      ###   ########.fr       */
+/*   Created: 2023/04/28 18:23:04 by melanieyane       #+#    #+#             */
+/*   Updated: 2023/04/28 18:33:35 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* not tested */
+/* work in progress */
 
-#include <stdio.h>
+#include <unistd.h>
 
-int	is_in_charset(const char *str, char str_i)
+int	main(int argc, char **argv)
 {
 	int	i;
+	int	j;
 
 	i = 0;
-	while (str[i])
+	j = 0;
+	if (argc == 3)
 	{
-		if (str[i] == str_i)
-			return (1);
-		i ++;
+		while (argv[1][i])
+		{
+			while (argv[2][j])
+			{
+				if (argv[1][i] == argv[2][j])
+					break ;
+				j ++;
+			}
+			if (argv[2][j] == '\0')
+				write(1, "0", 1);
+			i ++;
+		}
+		if (argv[1][i] == '\0')
+			write(1, "1", 1);
 	}
-	return (0);
-}
-
-size_t	ft_strcspn(const char *s, const char *reject)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-	{
-		if (is_in_charset(reject, s[i]) == 0)
-			return (i);
-		i ++;
-	}
-	return (i);
+	write(1, "\n", 1);
 }
