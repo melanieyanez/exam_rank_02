@@ -1,24 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_power_of_2.c                                    :+:      :+:    :+:   */
+/*   ft_strspn.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 13:19:13 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/04/28 17:00:27 by melanieyane      ###   ########.fr       */
+/*   Created: 2023/04/28 16:08:37 by melanieyane       #+#    #+#             */
+/*   Updated: 2023/04/28 17:14:47 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	is_power_of_2(unsigned int n)
+/* not tested */
+
+int	is_in_charset(const char *str, char str_i)
 {
-	if (n < 1)
-		return (0);
-	while (n != 1)
+	int	i;
+
+	i = 0;
+	while (str[i])
 	{
-		if (n % 2 != 0)
-			return (0);
-		n = n / 2;
+		if (str[i] == str_i)
+			return (1);
+		i ++;
 	}
-	return (1);
+	return (0);
+}
+
+size_t	ft_strcspn(const char *s, const char *reject)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (is_in_charset(reject, s[i]) == 0)
+			return (i);
+		i ++;
+	}
+	return (i);
 }

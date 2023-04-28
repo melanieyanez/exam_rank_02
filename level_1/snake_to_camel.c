@@ -6,7 +6,7 @@
 /*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 13:12:20 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/04/27 15:50:18 by melanieyane      ###   ########.fr       */
+/*   Updated: 2023/04/28 17:05:28 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,18 @@ int	main(int argc, char **argv)
 	int	i;
 
 	i = 0;
-	while (argv[1][i])
+	if (argc == 2)
 	{
-		if (argv[1][i] == '_')
+		while (argv[1][i])
 		{
+			if (argv[1][i] == '_')
+			{
+				i ++;
+				argv[1][i] = argv[1][i] - 32;
+			}
+			write(1, &argv[1][i], 1);
 			i ++;
-			argv[1][i] = argv[1][i] - 32;
 		}
-		write(1, &argv[1][i], 1);
-		i ++;
 	}
 	write(1, "\n", 1);
 }
