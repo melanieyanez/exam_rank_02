@@ -1,46 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_bits.c                                       :+:      :+:    :+:   */
+/*   lcm.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 15:46:05 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/05/04 10:51:42 by melanieyane      ###   ########.fr       */
+/*   Created: 2023/05/04 12:57:42 by melanieyane       #+#    #+#             */
+/*   Updated: 2023/05/04 13:25:36 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-void	print_bits(unsigned char octet)
+unsigned int	lcm(unsigned int a, unsigned int b)
 {
-	int		i;
-	char	bit[9];
+	int	n;
 
-	i = 7;
-	while (i >= 0)
+	n = 1;
+	if (a == 0 || b == 0)
+		return (0);
+	while (1)
 	{
-		while (octet)
-		{
-			if (octet % 2 == 0)
-				bit[i] = '0';
-			else
-				bit[i] = '1';
-			octet = octet / 2;
-			i --;
-		}
-		bit[i] = '0';
-		i --;
-	}
-	bit[8] = '\0';
-	i = 0;
-	while (bit[i])
-	{
-		write(1, &bit[i], 1);
-		i ++;
+		if (n % a == 0 && n % b == 0)
+			return (n);
+		n ++;
 	}
 }
-
-
-	
-	
