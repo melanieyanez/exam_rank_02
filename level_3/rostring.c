@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rostring.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
+/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/08 10:53:38 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/05/11 13:18:51 by melanieyane      ###   ########.fr       */
+/*   Created: 2023/05/16 18:00:07 by myanez-p          #+#    #+#             */
+/*   Updated: 2023/05/16 18:34:35 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,52 +16,39 @@ int	main(int argc, char **argv)
 {
 	int	i;
 	int	start;
-	int	ignored;
+	int	end;
+	int	space;
 
-	if (argc > 1)
+	if (argc >= 2)
 	{
-		start = 0;
 		i = 0;
-		ignored = 0;
-		while (argv[1][i] == ' ' || argv[1][i] == '\t')
-		{
-			//ignored = 1;
-			i++;
-		}
-		while ((argv[1][i] >= 'a' && argv[1][i] <= 'z')
-		|| (argv[1][i] >= 'A' && argv[1][i] <= 'Z'))
-		{
-			//ignored = 1;
+		space = 0;
+		while (argv[1][i] && (argv[1][i] == ' ' || argv[1][i] == '\t'))
 			i ++;
-		}
-		while ((argv[1][i] == ' ' || argv[1][i] == '\t')
-		&& (argv[1][i + 1] == ' ' || argv[1][i + 1] == '\t'))
+		start = i;
+		while (argv[1][i] && (argv[1][i] != ' ' && argv[1][i] != '\t'))
 			i ++;
-		start = i + 1;
-		while (argv[1][start])
+		end = i;
+		while (argv[1][i] && (argv[1][i] == ' ' || argv[1][i] == '\t'))
+			i ++;
+		while (argv[1][i])
 		{
-			while ((argv[1][start] == ' ' || argv[1][start] == '\t')
-			&& (argv[1][start + 1] == ' ' || argv[1][start + 1] == '\t'))
-				start ++;
+			while ((argv[1][i] == ' ' || argv[1][i] == '\t')
+			&& (argv[1][i + 1] == ' ' || argv[1][i + 1] == '\t'
+			|| argv[1][i + 1] == '\0'))
+				i ++;
 			if (argv[1][i] == ' ' || argv[1][i] == '\t')
-				ignored = 1;
+				space = 1;
+			write(1, &argv[1][i], 1);
+			i ++;
+		}
+		if (space == 1)
+			write(1, " ", 1);
+		while (start < end)
+		{
 			write(1, &argv[1][start], 1);
 			start ++;
-		}
-		//if (ignored == 1)
-		//{
-			i = 0;
-			if (ignored == 1)
-				write(1, " ", 1);
-			while (argv[1][i] == ' ' || argv[1][i] == '\t')
-				i++;
-			while ((argv[1][i] >= 'a' && argv[1][i] <= 'z')
-			|| (argv[1][i] >= 'A' && argv[1][i] <= 'Z'))
-			{
-				write(1, &argv[1][i], 1);
-				i ++;
-			}
-		//}
+		}		
 	}
 	write(1, "\n", 1);
 }
